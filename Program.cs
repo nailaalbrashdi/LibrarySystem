@@ -64,11 +64,36 @@
                         break;
 
 
-
-
                     case 2:
 
-                     
+                        Console.Write("Enter ISBN: ");
+                        string borrowISBN = Console.ReadLine();
+                        Console.Write("Enter a borrower name: ");
+                        string borrowerName = Console.ReadLine();
+
+                        bool isAvailable = false;
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if (borrowISBN == ISBNs[i])
+                            {
+                                isAvailable = true;
+
+
+                            }
+                        }
+                            if (isAvailable)
+                            {
+                                 Console.WriteLine("Book is available"); 
+                            }
+                            else
+                            {
+                                isAvailable = false;
+                                Console.WriteLine("sorry Book is not available");
+                            }
+
+                        
+                        
+
 
 
 
