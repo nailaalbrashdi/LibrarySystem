@@ -31,8 +31,7 @@
 
 
             bool exit = false;
-            bool isAvaliable = true;
-
+        
             while (true)
             {
                 Console.WriteLine("Welcome to the library System");
@@ -173,7 +172,67 @@
 
 
                     case 6:
-                        break;
+
+                        Console.Write("Enter current borrower name:");
+                        string currentBorrower = Console.ReadLine();
+                        Console.Write("Enter new borrower name:");
+                        string newBorrower = Console.ReadLine();
+                        Console.Write("Enter ISBN:");
+                        string transferISBN = Console.ReadLine();
+                        bool currentBorrowerFound = false;
+                        int currentBorrowerISBNIndex = 0;
+
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if(currentBorrower== BorrowerNames[i])
+                            {
+                                currentBorrowerISBNIndex = i;
+                                currentBorrowerFound= true;
+                                break;
+
+                            }
+                        }
+                        if (currentBorrowerFound == false)
+                        {
+                            Console.WriteLine("current borrower name not found");
+                        }
+                        else
+                        {
+                            bool newBorrowerFound = false;
+                            int newBorrowerISBNIndex = 0;
+                            for (int i = 0; i < 100; i++)
+                            {
+                                if (newBorrower == BorrowerNames[i])
+                                {
+                                    newBorrowerISBNIndex = i;
+                                    newBorrowerFound = true;
+                                    break;
+
+                                }
+                            }
+                            if (newBorrowerFound == false)
+                            {
+                                Console.WriteLine("New borrower name not found");
+                            }
+                            else 
+                            {
+                                string temp = BorrowerNames[currentBorrowerISBNIndex];
+                                BorrowerNames[currentBorrowerISBNIndex] = BorrowerNames[newBorrowerISBNIndex];
+                                BorrowerNames[newBorrowerISBNIndex] = temp;
+
+
+
+                            }
+                        }
+
+                        }
+
+
+
+
+
+
+                            break;
 
 
 
