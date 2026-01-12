@@ -16,28 +16,28 @@
             //seed data
 
             titles[0] = "Math";
-            ISBNs[0] = "ISBN 123";
+            ISBNs[0] = "ISBN 0";
             authors[0] = "Ali";
             BorrowerNames[0] = "qais";
             availability[0]=false;
             LastBookIndex++;
 
             titles[1] = "Science";
-            ISBNs[1] = "ISBN 456";
+            ISBNs[1] = "ISBN 1";
             authors[1] = "Omar";
             BorrowerNames[1] = "";
             availability[1] = true;
             LastBookIndex++;
 
             titles[2] = "Arabic";
-            ISBNs[2] = "ISBN 789";
+            ISBNs[2] = "ISBN 2";
             authors[2] = "Naila";
             BorrowerNames[2] = "";
             availability[2] = true;
             LastBookIndex++;
 
             titles[3] = "history";
-            ISBNs[3] = "ISBN 1122";
+            ISBNs[3] = "ISBN 3";
             authors[3] = "rudaina";
             BorrowerNames[3] = "arwa";
             availability[3] = false;
@@ -58,7 +58,6 @@
                 Console.WriteLine("7. Exit");
                 Console.Write("Please select an option: ");
                 int option = int.Parse(Console.ReadLine());
-
                 switch (option)
                 {
                     case 1:
@@ -243,14 +242,29 @@
 
 
                     case 7:
+
+                        exit = true;
+
                         break;
 
 
                     default:
+
+                        Console.WriteLine("Invalid option, please try again.");
+
                         break;
 
                 }
 
+                if (exit == true)
+                {
+                    break;
+                }
+
+
+                Console.WriteLine("Thank you for using the Library System, press any key....");
+                Console.ReadLine();
+                Console.Clear();
 
 
 
