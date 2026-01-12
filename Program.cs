@@ -25,8 +25,8 @@
             titles[1] = "Science";
             ISBNs[1] = "ISBN 456";
             authors[1] = "Omar";
-            BorrowerNames[1] = "mohammed";
-            availability[1] = false;
+            BorrowerNames[1] = "";
+            availability[1] = true;
             LastBookIndex++;
 
 
@@ -123,42 +123,53 @@
 
 
                     case 4:
- 
+
                         Console.Write("Enter ISBN or book title: ");
                         string Input = Console.ReadLine();
                         bool found = false;
-                        for(int i = 0; i < 100; i++)
+                        for (int i = 0; i < 100; i++)
                         {
                             if (Input == ISBNs[i] || Input == titles[i])
                             {
-                                found= true;
+                                found = true;
                                 Console.WriteLine("Book title:" + titles[i]);
                                 Console.WriteLine("Book author:" + authors[i]);
                                 Console.WriteLine("Book ISBN:" + ISBNs[i]);
                                 Console.WriteLine("Book availability:" + availability[i]);
 
                             }
-                        
+
                         }
 
                         if (found == false)
                         {
                             Console.WriteLine("Book not found");
                         }
-                        
+
                         break;
 
 
                     case 5:
-
-
-
-
-
-
                         
+                        Console.WriteLine("Available Books:");
 
+                        for(int i = 0; i < 100; i++)
+                        {
+                            if(availability[i] == true)
+                            {
+                           
+                                Console.WriteLine("Book title:" + titles[i]);
+                                Console.WriteLine("Book author:" + authors[i]);
+                                Console.WriteLine("Book ISBN:" + ISBNs[i]);
+
+                                break;
+                                
+                            }
+
+                        }
+                       
                         break;
+
 
 
                     case 6:
