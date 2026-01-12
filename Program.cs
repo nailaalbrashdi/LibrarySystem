@@ -66,7 +66,7 @@
 
                     case 2:
 
-                        Console.Write("Enter ISBN: ");
+                        Console.Write("Enter ISBN or book title: ");
                         string input = Console.ReadLine();
                         Console.Write("Enter a borrower name: ");
                         string borrowerName = Console.ReadLine();
@@ -96,6 +96,7 @@
 
 
                     case 3:
+                        
                         Console.Write("Enter ISBN:");
                         string returnISBN = Console.ReadLine();
 
@@ -122,10 +123,41 @@
 
 
                     case 4:
+ 
+                        Console.Write("Enter ISBN or book title: ");
+                        string Input = Console.ReadLine();
+                        bool found = false;
+                        for(int i = 0; i < 100; i++)
+                        {
+                            if (Input == ISBNs[i] || Input == titles[i])
+                            {
+                                found= true;
+                                Console.WriteLine("Book title:" + titles[i]);
+                                Console.WriteLine("Book author:" + authors[i]);
+                                Console.WriteLine("Book ISBN:" + ISBNs[i]);
+                                Console.WriteLine("Book availability:" + availability[i]);
+
+                            }
+                        
+                        }
+
+                        if (found == false)
+                        {
+                            Console.WriteLine("Book not found");
+                        }
+                        
                         break;
 
 
                     case 5:
+
+
+
+
+
+
+                        
+
                         break;
 
 
