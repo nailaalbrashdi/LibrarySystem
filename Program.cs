@@ -67,14 +67,14 @@
                     case 2:
 
                         Console.Write("Enter ISBN: ");
-                        string borrowISBN = Console.ReadLine();
+                        string input = Console.ReadLine();
                         Console.Write("Enter a borrower name: ");
                         string borrowerName = Console.ReadLine();
 
                         bool isAvailable = false;
                         for (int i = 0; i < 100; i++)
                         {
-                            if (borrowISBN == ISBNs[i])
+                            if (input == ISBNs[i] || input == titles[i])
                             {
                                 isAvailable = true;
 
@@ -91,21 +91,34 @@
                                 Console.WriteLine("sorry Book is not available");
                             }
 
-                        
-                        
-
-
-
-
-
-
-
 
                         break;
 
 
                     case 3:
-                        break;
+                        Console.Write("Enter ISBN:");
+                        string returnISBN = Console.ReadLine();
+
+                        bool isaAvailable = false;
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if(returnISBN != ISBNs[i])
+                            {
+                                isaAvailable = false;
+
+                            }
+                        }
+
+                        if (isaAvailable == true)
+                        {
+                            Console.Write("book is returned");
+                        }
+                        else
+                        {
+                            Console.Write("book is not returned");
+                        }
+
+                            break;
 
 
                     case 4:
