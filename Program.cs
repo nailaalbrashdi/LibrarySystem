@@ -193,13 +193,13 @@
                         Console.Write("Enter ISBN:");
                         string transferISBN = Console.ReadLine();
                         bool currentBorrowerFound = false;
-                        int currentBorrowerISBNIndex = 0;
+                        int currentBorrowerIndex = 0;
 
                         for (int i = 0; i < 100; i++)
                         {
                             if (currentBorrower == BorrowerNames[i])
                             {
-                                currentBorrowerISBNIndex = i;
+                                currentBorrowerIndex = i;
                                 currentBorrowerFound = true;
                                 break;
 
@@ -212,12 +212,12 @@
                         else
                         {
                             bool newBorrowerFound = false;
-                            int newBorrowerISBNIndex = 0;
+                            int newBorrowerIndex = 0;
                             for (int i = 0; i < 100; i++)
                             {
                                 if (newBorrower == BorrowerNames[i])
                                 {
-                                    newBorrowerISBNIndex = i;
+                                    newBorrowerIndex = i;
                                     newBorrowerFound = true;
                                     break;
 
@@ -229,9 +229,9 @@
                             }
                             else
                             {
-                                string temp = BorrowerNames[currentBorrowerISBNIndex];
-                                BorrowerNames[currentBorrowerISBNIndex] = BorrowerNames[newBorrowerISBNIndex];
-                                BorrowerNames[newBorrowerISBNIndex] = temp;
+                                string temp = BorrowerNames[currentBorrowerIndex];
+                                BorrowerNames[currentBorrowerIndex] = BorrowerNames[newBorrowerIndex];
+                                BorrowerNames[newBorrowerIndex] = temp;
 
 
 
