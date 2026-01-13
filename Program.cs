@@ -1,4 +1,6 @@
-﻿namespace LibrarySystem
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace LibrarySystem
 {
     internal class Program
     {
@@ -11,36 +13,46 @@
             string[] BorrowerNames = new string[100];
             string[] authors = new string[100];
             bool[] availability = new bool[100];
+            string[] bookCategories = new string[100]; // NEW - Fiction, Science, History, etc.
+            string[] borrowCount = new string[100]; // NEW - track how many times each book was borrowed
             int LastBookIndex = -1;
 
             //seed data
 
-            titles[0] = "Math";
+            titles[0] = "Algebra";
             ISBNs[0] = "ISBN 0";
             authors[0] = "Ali";
             BorrowerNames[0] = "qais";
             availability[0]=false;
+            bookCategories[0]= "mathematics";
+            borrowCount[0] = "2";
             LastBookIndex++;
 
-            titles[1] = "Science";
+            titles[1] = "Physics";
             ISBNs[1] = "ISBN 1";
             authors[1] = "Omar";
             BorrowerNames[1] = "";
             availability[1] = true;
+            bookCategories[1] = "science";
+            borrowCount[1] = "0";
             LastBookIndex++;
 
-            titles[2] = "Arabic";
+            titles[2] = "Oman Culture";
             ISBNs[2] = "ISBN 2";
             authors[2] = "Naila";
             BorrowerNames[2] = "";
             availability[2] = true;
+            bookCategories[2] = "History";
+            borrowCount[2] = "4";
             LastBookIndex++;
 
-            titles[3] = "history";
+            titles[3] = "Islamic Culture";
             ISBNs[3] = "ISBN 3";
             authors[3] = "rudaina";
             BorrowerNames[3] = "arwa";
             availability[3] = false;
+            bookCategories[3] = "History";
+            borrowCount[3] = "10";
             LastBookIndex++;
 
 
@@ -78,72 +90,98 @@
 
                     case 2:
 
-                        Console.Write("Enter ISBN or book title: ");
-                        string input = Console.ReadLine();
-                        Console.Write("Enter a borrower name: ");
-                        string borrowerName = Console.ReadLine();
+                        Console.Write("Enter ISBN or Title: ");
+                        string Input = Console.ReadLine();
+                        bool Found = false;
 
-                        bool isAvailable = false;
-                        for (int i = 0; i < 100; i++)
+                        for (int i = 0; i <100 ; i++)
                         {
-                            if (input == ISBNs[i] || input == titles[i])
+                            if (titles[i] == Input || ISBNs[i] == Input)
                             {
-                                isAvailable = true;
+                                //book is found in system
+                                Found = true;
+
+                                if (availability[i] == true)
+                                {
+                                    Console.Write("Borrower name: ");
+                                    BorrowerNames[i] = Console.ReadLine();
+                                    availability[i] = false;
+                                    Console.WriteLine("Book borrowed successfully");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Book already borrowed");
+                                }
+
+                                break;
 
 
                             }
+
                         }
-                        if (isAvailable)
+
+                        if (Found == false)
                         {
-                            Console.WriteLine("Book is available");
+                            Console.WriteLine("Book not found");
                         }
-                        else
-                        {
-                            isAvailable = false;
-                            Console.WriteLine("sorry Book is not available");
-                        }
+
 
 
                         break;
+
 
 
                     case 3:
 
-                        Console.Write("Enter ISBN:");
-                        string returnISBN = Console.ReadLine();
+                        Console.Write("Enter ISBN or Title: ");
+                        string input = Console.ReadLine();
 
-                        bool isaAvailable = false;
-                        for (int i = 0; i < 100; i++)
+                        bool found = false;
+
+                        for (int i = 0; i <100; i++)
                         {
-                            if (returnISBN != ISBNs[i])
+                            if (titles[i] == input || ISBNs[i] == input)
                             {
-                                isaAvailable = false;
+                                //book is found in system
+                                found = true;
+
+
+
+                                BorrowerNames[i] = "";
+                                availability[i] = true;
+                                Console.WriteLine("Book returned successfully");
+
+
+
+                                break;
+
 
                             }
+
                         }
 
-                        if (isaAvailable == true)
+                        if (found == false)
                         {
-                            Console.Write("book is returned");
+                            Console.WriteLine("Book not found");
                         }
-                        else
-                        {
-                            Console.Write("book is not returned");
-                        }
+
+
+
 
                         break;
+
 
 
                     case 4:
 
                         Console.Write("Enter ISBN or book title: ");
-                        string Input = Console.ReadLine();
-                        bool found = false;
+                        string INPUT = Console.ReadLine();
+                        bool FOUND = false;
                         for (int i = 0; i < 100; i++)
                         {
-                            if (Input == ISBNs[i] || Input == titles[i])
+                            if (INPUT == ISBNs[i] || INPUT == titles[i])
                             {
-                                found = true;
+                                FOUND = true;
                                 Console.WriteLine("Book title:" + titles[i]);
                                 Console.WriteLine("Book author:" + authors[i]);
                                 Console.WriteLine("Book ISBN:" + ISBNs[i]);
@@ -153,7 +191,7 @@
 
                         }
 
-                        if (found == false)
+                        if (FOUND == false)
                         {
                             Console.WriteLine("Book not found");
                         }
