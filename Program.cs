@@ -16,6 +16,7 @@ namespace LibrarySystem
             string[] bookCategories = new string[100]; // NEW - Fiction, Science, History, etc.
             string[] borrowCount = new string[100]; // NEW - track how many times each book was borrowed
             int LastBookIndex = -1;
+            
 
             //seed data
 
@@ -67,7 +68,9 @@ namespace LibrarySystem
                 Console.WriteLine("4. Search Book");
                 Console.WriteLine("5. List All Available Books ");
                 Console.WriteLine("6. Transfer Book");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("7. Search Books by Category");
+                Console.WriteLine("8. View Most Borrowed Books");
+                Console.WriteLine("9. Exit");
                 Console.Write("Please select an option: ");
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -81,6 +84,8 @@ namespace LibrarySystem
                         Console.Write("Enter the book ISBN: ");
                         ISBNs[LastBookIndex + 1] = "ISBN" + (LastBookIndex + 1);
                         Console.WriteLine(ISBNs[LastBookIndex + 1]);
+                        Console.Write("Enter the book category: ");
+                        bookCategories[LastBookIndex + 1] = Console.ReadLine();
                         availability[LastBookIndex + 1] = true;
                         Console.WriteLine("Book added successfully!");
                         LastBookIndex++;
@@ -107,6 +112,7 @@ namespace LibrarySystem
                                     BorrowerNames[i] = Console.ReadLine();
                                     availability[i] = false;
                                     Console.WriteLine("Book borrowed successfully");
+                                    
                                 }
                                 else
                                 {
@@ -278,8 +284,46 @@ namespace LibrarySystem
             
                         break;
 
-
+                    
+                    
                     case 7:
+
+                        Console.Write("Enter a category to search:");
+                        string categoryInput = Console.ReadLine();
+                        bool categoryFound = false;
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if (categoryInput == bookCategories[i])
+                            {
+                                categoryFound = true;
+                                Console.WriteLine("Book title:" + titles[i]);
+                                Console.WriteLine("Book author:" + authors[i]);
+                                Console.WriteLine("Book ISBN:" + ISBNs[i]);
+                                Console.WriteLine("Book availability:" + availability[i]);
+
+                            }
+                        }
+
+                             if(categoryFound == false)
+                        {
+                            Console.WriteLine("no books found in this category");
+                        }
+                           
+
+                        
+                        
+
+
+                        break;
+
+                        
+                    case 8:
+                        break;
+
+
+
+
+                    case 9:
 
                         exit = true;
 
