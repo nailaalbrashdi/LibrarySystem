@@ -14,9 +14,12 @@ namespace LibrarySystem
             string[] authors = new string[100];
             bool[] availability = new bool[100];
             string[] bookCategories = new string[100]; // NEW - Fiction, Science, History, etc.
-            string[] borrowCount = new string[100]; // NEW - track how many times each book was borrowed
+            int[] borrowCount = new int[100]; // NEW - track how many times each book was borrowed
             int LastBookIndex = -1;
             
+
+
+
 
             //seed data
 
@@ -26,7 +29,7 @@ namespace LibrarySystem
             BorrowerNames[0] = "qais";
             availability[0]=false;
             bookCategories[0]= "mathematics";
-            borrowCount[0] = "2";
+            borrowCount[0] = 2;
             LastBookIndex++;
 
             titles[1] = "Physics";
@@ -35,7 +38,7 @@ namespace LibrarySystem
             BorrowerNames[1] = "";
             availability[1] = true;
             bookCategories[1] = "science";
-            borrowCount[1] = "0";
+            borrowCount[1] = 0;
             LastBookIndex++;
 
             titles[2] = "Oman Culture";
@@ -44,7 +47,7 @@ namespace LibrarySystem
             BorrowerNames[2] = "";
             availability[2] = true;
             bookCategories[2] = "History";
-            borrowCount[2] = "4";
+            borrowCount[2] = 4;
             LastBookIndex++;
 
             titles[3] = "Islamic Culture";
@@ -53,7 +56,7 @@ namespace LibrarySystem
             BorrowerNames[3] = "arwa";
             availability[3] = false;
             bookCategories[3] = "History";
-            borrowCount[3] = "10";
+            borrowCount[3] = 10;
             LastBookIndex++;
 
 
@@ -308,16 +311,36 @@ namespace LibrarySystem
                         {
                             Console.WriteLine("no books found in this category");
                         }
-                           
-
-                        
-                        
-
 
                         break;
 
                         
                     case 8:
+
+                        Console.WriteLine("looking for the most borrowed Book");
+
+                        int largest = borrowCount[0];
+
+                        
+                        for (int i = 1; i < 100; i++)
+                        {
+                            if (borrowCount[i] > largest)
+                            {
+                                largest = borrowCount[i];
+                            }
+                        }
+
+                        
+                        for (int i = 0; i < 100; i++)
+                        {
+                            if (borrowCount[i] == largest)
+                            {
+                                Console.WriteLine("The most borrowed book is: " + titles[i]);
+                                break; 
+                            }
+                        }
+
+
                         break;
 
 
