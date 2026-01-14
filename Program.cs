@@ -102,40 +102,33 @@ namespace LibrarySystem
                         string Input = Console.ReadLine();
                         bool Found = false;
 
-                        for (int i = 0; i <100 ; i++)
+                        for (int i = 0; i < 100; i++)
                         {
+ 
                             if (titles[i] == Input || ISBNs[i] == Input)
                             {
-                                //book is found in system
-                                Found = true;
-
+                                Found = true; 
                                 if (availability[i] == true)
                                 {
                                     Console.Write("Borrower name: ");
                                     BorrowerNames[i] = Console.ReadLine();
-                                    availability[i] = false;
+                                    availability[i] = false;                                   
                                     borrowCount[i]++;
-                                    Console.WriteLine("Book borrowed successfully");
-                                    
+                                    Console.WriteLine("Book borrowed successfully!");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Book already borrowed");
+                                    Console.WriteLine("Book already borrowed by: " + BorrowerNames[i]);
                                 }
 
-                                break;
-
-
+                                break; 
                             }
-
                         }
 
-                        if (Found == false)
+                        if (!Found)
                         {
                             Console.WriteLine("Book not found");
                         }
-
-
 
                         break;
 
@@ -148,21 +141,15 @@ namespace LibrarySystem
 
                         bool found = false;
 
-                        for (int i = 0; i <100; i++)
+                        for (int i = 0; i < 100; i++)
                         {
                             if (titles[i] == input || ISBNs[i] == input)
                             {
                                 //book is found in system
                                 found = true;
-
-
-
                                 BorrowerNames[i] = "";
                                 availability[i] = true;
                                 Console.WriteLine("Book returned successfully");
-
-
-
                                 break;
 
 
@@ -175,11 +162,7 @@ namespace LibrarySystem
                             Console.WriteLine("Book not found");
                         }
 
-
-
-
                         break;
-
 
 
                     case 4:
