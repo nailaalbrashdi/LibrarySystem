@@ -15,6 +15,8 @@ namespace LibrarySystem
             bool[] availability = new bool[100];
             string[] bookCategories = new string[100]; // NEW - Fiction, Science, History, etc.
             int[] borrowCount = new int[100]; // NEW - track how many times each book was borrowed
+            Date[] returndate = new Date[100]; //NEW - determine the current borrowing expected return date
+            double[] lateFees = new double[100]; // NEW - track late fees per borrower
             int LastBookIndex = -1;
             
 
@@ -136,28 +138,52 @@ namespace LibrarySystem
 
                     case 3:
 
+                        
                         Console.Write("Enter ISBN or Title: ");
-                        string input = Console.ReadLine();
+                        string returnInput = Console.ReadLine();
 
-                        bool found = false;
+                        bool returnFound = false;
 
-                        for (int i = 0; i < 100; i++)
+                        for (int i = 0; i <100; i++)
                         {
-                            if (titles[i] == input || ISBNs[i] == input)
+                            if (titles[i] == returnInput || ISBNs[i] == returnInput)
                             {
-                                //book is found in system
-                                found = true;
-                                BorrowerNames[i] = "";
-                                availability[i] = true;
-                                Console.WriteLine("Book returned successfully");
+                                returnFound = true;
+
+                                if (availability[i] == false) 
+                                {
+                                    Console.Write("Is the book returned late? (yes/no): "); 
+                                    string isLate = Console.ReadLine().ToLower();
+
+                                    if (isLate == "yes")
+                                    {
+                                        Console.Write("Enter number of days late: "); 
+                                        int daysLate = int.Parse(Console.ReadLine());
+                                        double feePerDay = 2;
+                                        lateFees[i] = daysLate * feePerDay; 
+
+                                        Console.WriteLine("Late fee calculated: " + lateFees[i] + " OMR"); 
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Book returned on time"); 
+                                        lateFees[i] = 0;
+                                    }
+
+                                    BorrowerNames[i] = "";
+                                    availability[i] = true;
+                                    Console.WriteLine("Book returned successfully!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("This book was not borrowed");
+                                }
+
                                 break;
-
-
                             }
-
                         }
 
-                        if (found == false)
+                        if (returnFound == false)
                         {
                             Console.WriteLine("Book not found");
                         }
