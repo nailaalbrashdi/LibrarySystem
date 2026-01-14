@@ -24,7 +24,7 @@ namespace LibrarySystem
             //seed data
 
             titles[0] = "Algebra";
-            ISBNs[0] = "ISBN 0";
+            ISBNs[0] = "0";
             authors[0] = "Ali";
             BorrowerNames[0] = "qais";
             availability[0]=false;
@@ -33,7 +33,7 @@ namespace LibrarySystem
             LastBookIndex++;
 
             titles[1] = "Physics";
-            ISBNs[1] = "ISBN 1";
+            ISBNs[1] = "1";
             authors[1] = "Omar";
             BorrowerNames[1] = "";
             availability[1] = true;
@@ -42,21 +42,21 @@ namespace LibrarySystem
             LastBookIndex++;
 
             titles[2] = "Oman Culture";
-            ISBNs[2] = "ISBN 2";
+            ISBNs[2] = "2";
             authors[2] = "Naila";
             BorrowerNames[2] = "";
             availability[2] = true;
             bookCategories[2] = "History";
-            borrowCount[2] = 4;
+            borrowCount[2] = 1;
             LastBookIndex++;
 
             titles[3] = "Islamic Culture";
-            ISBNs[3] = "ISBN 3";
+            ISBNs[3] = "3";
             authors[3] = "rudaina";
             BorrowerNames[3] = "arwa";
             availability[3] = false;
             bookCategories[3] = "History";
-            borrowCount[3] = 10;
+            borrowCount[3] = 2;
             LastBookIndex++;
 
 
@@ -114,6 +114,7 @@ namespace LibrarySystem
                                     Console.Write("Borrower name: ");
                                     BorrowerNames[i] = Console.ReadLine();
                                     availability[i] = false;
+                                    borrowCount[i]++;
                                     Console.WriteLine("Book borrowed successfully");
                                     
                                 }
